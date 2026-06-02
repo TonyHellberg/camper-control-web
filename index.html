@@ -305,15 +305,37 @@
     <span class="logo-title">CamperControl</span>
   </div>
   <div class="logo-v2">v2 · Raspberry Pi · Node-RED · MQTT</div>
-  <p class="hero-tagline">Styr och övervaka hela campern från mobilen — el, solenergi, värme, kyla, gas, vatten, router och kameror i ett gränssnitt.</p>
+  <p class="hero-tagline">Full kontroll över campern — var du än befinner dig. Batteribank, solceller, Truma-värme, AC, gas, vatten, kameror och 4G-router i ett enda gränssnitt. Allt kör lokalt på en Raspberry Pi, ingen molntjänst krävs.</p>
 
   <div class="status-bar">
-    <span class="status-pill"><span class="sdot s-ylw"></span>Solceller</span>
-    <span class="status-pill"><span class="sdot s-grn"></span>Batterier</span>
-    <span class="status-pill"><span class="sdot s-blu"></span>4G Router</span>
-    <span class="status-pill"><span class="sdot s-prp"></span>Sensorer</span>
+    <span class="status-pill"><span class="sdot s-ylw"></span>Solceller aktiva</span>
+    <span class="status-pill"><span class="sdot s-grn"></span>2× LiFePO4 180Ah</span>
+    <span class="status-pill"><span class="sdot s-blu"></span>4G + WiFi Repeater</span>
+    <span class="status-pill"><span class="sdot s-prp"></span>WebSocket realtid</span>
   </div>
   <p class="scroll-hint"><i class="fa-solid fa-chevron-down"></i></p>
+</div>
+
+<!-- STATS STRIP -->
+<div style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--card)">
+  <div style="max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:0 1.5rem">
+    <div style="padding:1.5rem 1rem;border-right:1px solid var(--border)">
+      <div style="font-size:2rem;font-weight:800;letter-spacing:-.04em;background:linear-gradient(90deg,var(--yellow),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1">360 Ah</div>
+      <div style="font-size:0.75rem;color:var(--muted);margin-top:0.25rem;text-transform:uppercase;letter-spacing:.06em">LiFePO4 husbank</div>
+    </div>
+    <div style="padding:1.5rem 1rem;border-right:1px solid var(--border)">
+      <div style="font-size:2rem;font-weight:800;letter-spacing:-.04em;background:linear-gradient(90deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1">3 000 W</div>
+      <div style="font-size:0.75rem;color:var(--muted);margin-top:0.25rem;text-transform:uppercase;letter-spacing:.06em">Inverter-kapacitet</div>
+    </div>
+    <div style="padding:1.5rem 1rem;border-right:1px solid var(--border)">
+      <div style="font-size:2rem;font-weight:800;letter-spacing:-.04em;background:linear-gradient(90deg,var(--green),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1">5 flikar</div>
+      <div style="font-size:0.75rem;color:var(--muted);margin-top:0.25rem;text-transform:uppercase;letter-spacing:.06em">Realtids-PWA</div>
+    </div>
+    <div style="padding:1.5rem 1rem">
+      <div style="font-size:2rem;font-weight:800;letter-spacing:-.04em;background:linear-gradient(90deg,var(--purple),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1">10 s</div>
+      <div style="font-size:0.75rem;color:var(--muted);margin-top:0.25rem;text-transform:uppercase;letter-spacing:.06em">Uppdateringsintervall</div>
+    </div>
+  </div>
 </div>
 
 <!-- SYSTEM DIAGRAM -->
@@ -348,7 +370,7 @@
         </div>
         <div class="d-node dn-net">
           <div class="d-icon">📡</div>
-          <div class="d-info"><div class="d-title">4G Router (OpenWRT)</div><div class="d-sub">Signal, data & körstatus</div></div>
+          <div class="d-info"><div class="d-title">4G Router (OpenWRT)</div><div class="d-sub">Extern antenn · WiFi Repeater · auto-anslut</div></div>
           <span class="d-tag">LuCI</span>
         </div>
       </div>
@@ -368,12 +390,12 @@
       <div class="d-col">
         <div class="d-node dn-heat">
           <div class="d-icon">🔥</div>
-          <div class="d-info"><div class="d-title">Truma Combi 6E</div><div class="d-sub">Värme + varmvatten</div></div>
-          <span class="d-tag">Serial</span>
+          <div class="d-info"><div class="d-title">Truma Combi 6E</div><div class="d-sub">Värme + varmvatten · inetbox.py</div></div>
+          <span class="d-tag">LIN/RJ12</span>
         </div>
         <div class="d-node dn-heat">
           <div class="d-icon">❄️</div>
-          <div class="d-info"><div class="d-title">Dometic Aventa</div><div class="d-sub">Luftkonditionering</div></div>
+          <div class="d-info"><div class="d-title">Truma Aventi</div><div class="d-sub">Luftkonditionering</div></div>
           <span class="d-tag">MQTT</span>
         </div>
         <div class="d-node dn-water">
@@ -405,73 +427,77 @@
 <!-- FEATURES -->
 <section>
   <h2>Funktioner</h2>
-  <p class="section-sub">Full kontroll över alla camper-system från mobilen.</p>
+  <p class="section-sub">Allt du behöver — och inget du inte behöver. Byggt för verklig campinganvändning.</p>
   <div class="features-grid">
+    <div class="feature-card" style="border-color:rgba(34,197,94,0.25);background:linear-gradient(135deg,rgba(34,197,94,0.04),var(--card))">
+      <div class="feature-icon">☁️</div>
+      <h3>Automatisk backup till Google Drive</h3>
+      <p>Nattlig säkerhetskopiering av hela konfigurationen — flows, scripts och inställningar — direkt till Google Drive. Möjliggör snabb återställning efter ett hårdvarubyte. Senaste backup syns live i appen.</p>
+    </div>
     <div class="feature-card">
       <div class="feature-icon">⚡</div>
       <h3>Energiflöde i realtid</h3>
-      <p>Animerat SVG-diagram visar Solar → MPPT → Husbank och DC-DC Orion med live-data via WebSocket.</p>
+      <p>Animerat SVG-diagram visar Solar → MPPT → Husbank och DC-DC Orion med live-data via WebSocket. Alla flödespiler tänds när ström flödar.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🔋</div>
       <h3>Batteriräckvidd</h3>
-      <p>Beräknar återstående tid från BMS-data (remain_ah) och nettolast. Visar "∞" vid landström.</p>
+      <p>Beräknar återstående tid från JK BMS-data (remain_ah) och nettolast i realtid. Visar "∞" vid landström. Båda batteribankerna (B1 + B2) visas med gradient-laddningsstatus.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🌡️</div>
       <h3>Smart termostat</h3>
-      <p>Auto- och manuellt läge med klimatprofiler (Normal, Eco, Natt). Styr Truma Combi 6E via iNetbox.</p>
+      <p>Auto- och manuellt läge med klimatprofiler (Normal, Eco, Natt). Styr Truma Combi 6E via iNetbox-protokoll direkt via serial — utan molntjänst.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">❄️</div>
       <h3>AC-styrning</h3>
-      <p>Dometic Aventa luftkonditionering — ömsesidigt uteslutande med värme i auto-läge.</p>
+      <p>Truma Aventi luftkonditionering via MQTT — ömsesidigt uteslutande med värme i auto-läge. Systemet hindrar att värme och kyla körs samtidigt.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">💧</div>
-      <h3>Tank & gasol</h3>
-      <p>Animerade CSS-tankmätare för färsk- och gråvatten. Gasol visar kg, procent och beräknad tid kvar baserat på Trumas aktuella förbrukning.</p>
+      <h3>Tank &amp; gasol</h3>
+      <p>Animerade CSS-tankmätare för färsk- och gråvatten. Gasol visar kg, procent och beräknad tid kvar baserat på Trumas aktuella förbrukning i gram/timme.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">⛽</div>
       <h3>Reservflaska</h3>
-      <p>Aktivera reservgasolflaska och byt aktiv flaska direkt från appen — med bekräftelsedialog.</p>
+      <p>Aktivera reservgasolflaska och byt aktiv flaska direkt från appen — med bekräftelsedialog. Perfekt för utlandsresor med dubbel gasolkapacitet.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">📡</div>
-      <h3>Routermonitorering</h3>
-      <p>4G-signal (RSRP/RSSI/RSRQ/SINR), WiFi Repeater, live bandbredd-grafer och 30-dagars datahistorik från OpenWRT via LuCI.</p>
+      <h3>4G-router med extern antenn</h3>
+      <p>OpenWRT-router med externa 4G-antenner för maximal signal. Ansluter automatiskt till campingplatsens WiFi när det finns — 4G som fallback. Realtidsmätning av RSRP/RSSI/RSRQ/SINR, live bandbredd-grafer och 30-dagars datatrafik-historik via LuCI API.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🖥️</div>
-      <h3>Systemhälsa</h3>
-      <p>CPU-last, RAM-användning och CPU-temperatur för Raspberry Pi — direkt i System-tabben.</p>
+      <div class="feature-icon">🔔</div>
+      <h3>SMS-larm via 46elks</h3>
+      <p>Automatiska SMS-larm vid Truma-fel, inverter-överlast, gasol under 10%, vatten under 25% och gråvatten över 75%. Inga push-notiser — SMS når dig alltid.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🚗</div>
       <h3>Körloggning</h3>
-      <p>Loggar automatiskt varje körning via Victron Orion DC-DC till CSV — alternatorspänning, ström och SOC.</p>
+      <p>Loggar automatiskt varje körning via Victron Orion DC-DC till CSV — alternatorspänning, ström och SOC per körning. Spårbar historia av alla resor.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">📊</div>
       <h3>Historikdiagram</h3>
-      <p>14 dagars stapeldiagram per tab: solproduktion, inverterförbrukning, inomhustemperatur, vattenförbrukning och gasol.</p>
+      <p>14 dagars stapeldiagram: solproduktion, inverterförbrukning, inomhustemperatur, vattenförbrukning och gasol. Daglig historik sparas lokalt på RPi.</p>
     </div>
-
     <div class="feature-card">
       <div class="feature-icon">📷</div>
       <h3>Live-kameror</h3>
-      <p>Inne- och frontkamera via USB + ffmpeg. Nginx serverar senaste bildrutan direkt — ingen streaming-server behövs.</p>
+      <p>Inne- och frontkamera via USB + ffmpeg. Nginx serverar senaste JPEG-bildrutan direkt utan streaming-server. Tidsstämpel i realtid.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🔌</div>
-      <h3>Landström-detektion</h3>
-      <p>Detekterar automatiskt 230V landström och anpassar batteriräknevisningen.</p>
+      <div class="feature-icon">🖥️</div>
+      <h3>Systemhälsa</h3>
+      <p>CPU-last, RAM-användning och CPU-temperatur för Raspberry Pi — direkt i System-tabben. Tidigt varning innan RPi-problem uppstår.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🌓</div>
-      <h3>Mörkt & ljust tema</h3>
-      <p>Byt mellan mörkt och ljust tema — sparas i webbläsaren.</p>
+      <h3>PWA med mörkt &amp; ljust tema</h3>
+      <p>Installeras som app på mobilen. Mörkt tema standard, ljust tillgängligt. Sparas i webbläsaren. Fungerar offline med service worker.</p>
     </div>
   </div>
 </section>
@@ -720,7 +746,7 @@
               <div class="ps-card-h">❄️ Luftkonditionering <span class="ps-b ps-off" style="margin-left:auto">AV</span></div>
               <div class="ps-card-b">
                 <div style="display:flex;align-items:center;justify-content:space-between">
-                  <div><div style="font-size:6.5px;font-weight:500">Aventa</div><div style="font-size:5.5px;color:var(--muted)">Manuell kylning</div></div>
+                  <div><div style="font-size:6.5px;font-weight:500">Truma Aventi</div><div style="font-size:5.5px;color:var(--muted)">Manuell kylning</div></div>
                   <div style="width:28px;height:15px;background:#27272a;border-radius:8px;position:relative"><div style="position:absolute;top:2px;left:2px;width:11px;height:11px;border-radius:50%;background:var(--muted)"></div></div>
                 </div>
               </div>
@@ -895,11 +921,13 @@
   <div class="tech-list">
     <span class="tech-pill"><i class="fa-solid fa-diagram-project"></i>Node-RED</span>
     <span class="tech-pill"><i class="fa-solid fa-tower-broadcast"></i>Mosquitto MQTT</span>
-    <span class="tech-pill"><i class="fa-brands fa-python"></i>Python (BLE, Modbus, LuCI)</span>
-    <span class="tech-pill"><i class="fa-brands fa-js"></i>Vanilla JS · PWA</span>
+    <span class="tech-pill"><i class="fa-brands fa-python"></i>Python · BLE, Modbus, LuCI</span>
+    <span class="tech-pill"><i class="fa-brands fa-python"></i>inetbox.py · Truma LIN-protokoll</span>
+    <span class="tech-pill"><i class="fa-brands fa-js"></i>Vanilla JS · PWA · Service Worker</span>
     <span class="tech-pill"><i class="fa-solid fa-server"></i>nginx</span>
     <span class="tech-pill"><i class="fa-solid fa-database"></i>InfluxDB 2.0</span>
     <span class="tech-pill"><i class="fa-solid fa-camera"></i>ffmpeg (kameror)</span>
+    <span class="tech-pill"><i class="fa-brands fa-google-drive"></i>Google Drive (backup)</span>
     <span class="tech-pill"><i class="fa-solid fa-microchip"></i>Raspberry Pi OS</span>
   </div>
 </section>
