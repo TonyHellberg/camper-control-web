@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CamperControl v2</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #09090b;
+      --card: #18181b;
+      --border: #27272a;
+      --text: #fafafa;
+      --muted: #71717a;
+      --green: #22c55e;
+      --yellow: #eab308;
+      --blue: #3b82f6;
+      --red: #ef4444;
+      --orange: #f97316;
+      --purple: #a855f7;
+      --teal: #14b8a6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; line-height: 1.6; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 3rem 1.5rem;
+      background: radial-gradient(ellipse at 50% -10%, #0d2010 0%, var(--bg) 65%);
+    }
+    .logo {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.6rem;
+    }
+    .logo-mark {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--blue); display: flex; align-items: center; justify-content: center;
+    }
+    .logo-mark svg { color: #fff; }
+    .logo-title { background: linear-gradient(90deg, var(--green), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .logo-v2 { font-size: 0.9rem; font-weight: 400; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.8rem; }
+    .hero-tagline { font-size: 1.2rem; color: var(--muted); max-width: 540px; margin-bottom: 2.5rem; }
+
+    .status-bar { display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; margin-bottom: 3rem; }
+    .status-pill {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 999px; padding: 0.35rem 1rem; font-size: 0.8rem;
+    }
+    .sdot { width: 7px; height: 7px; border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+    .s-grn { background: var(--green); box-shadow: 0 0 6px var(--green); }
+    .s-ylw { background: var(--yellow); box-shadow: 0 0 6px var(--yellow); }
+    .s-blu { background: var(--blue); box-shadow: 0 0 6px var(--blue); }
+    .s-prp { background: var(--purple); box-shadow: 0 0 6px var(--purple); }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+    .scroll-hint { color: var(--muted); font-size: 0.85rem; animation: bounce 2s ease-in-out infinite; }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+    /* ── SECTIONS ── */
+    section { max-width: 1060px; margin: 0 auto; padding: 5rem 1.5rem; }
+    section + section { border-top: 1px solid var(--border); }
+    h2 { font-size: 1.65rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .section-sub { color: var(--muted); margin-bottom: 2.5rem; font-size: 0.95rem; }
+
+    /* ── TABS MOCKUP ── */
+    .mockup-wrap { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: 0 0 60px rgba(34,197,94,0.05); }
+    .mockup-titlebar { background: #111113; border-bottom: 1px solid var(--border); padding: 0.5rem 1rem; display: flex; align-items: center; gap: 1rem; }
+    .tb-dots { display:flex; gap:5px; }
+    .tb-dot { width:10px; height:10px; border-radius:50%; }
+    .tb-dot:nth-child(1){background:#ff5f57} .tb-dot:nth-child(2){background:#febc2e} .tb-dot:nth-child(3){background:#28c840}
+    .tb-url { flex:1; background:#1a1a1d; border:1px solid var(--border); border-radius:5px; padding:0.18rem 0.7rem; font-size:0.72rem; color:var(--muted); text-align:center; }
+
+    .mockup-header { background: #111113; border-bottom: 1px solid var(--border); padding: 0 1rem; display: flex; align-items: center; gap: 0.8rem; height: 44px; }
+    .mh-logo { display:flex; align-items:center; gap:7px; font-size:13px; font-weight:700; }
+    .mh-mark { width:22px; height:22px; background:var(--blue); border-radius:5px; display:flex; align-items:center; justify-content:center; }
+    .mh-mark svg { width:11px; color:#fff; }
+    .mh-conn { margin-left:auto; display:flex; align-items:center; gap:5px; font-size:11px; color:var(--muted); }
+    .mh-dot { width:6px; height:6px; border-radius:50%; background:var(--green); animation:pulse 2s ease-in-out infinite; box-shadow:0 0 5px var(--green); }
+
+    .mockup-nav { background: #111113; border-bottom: 1px solid var(--border); display: flex; }
+    .mnav-b { flex:1; padding:0.55rem 0.5rem; text-align:center; font-size:10px; font-weight:600; color:var(--muted); letter-spacing:.04em; text-transform:uppercase; border-bottom:2px solid transparent; }
+    .mnav-b.active { color:var(--text); border-bottom-color:var(--blue); }
+
+    .mockup-body { background: #0c0c0e; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+
+    /* metrics row */
+    .m-metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+    .m-metric { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px; }
+    .m-v { font-size: 17px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; margin-bottom: 3px; }
+    .m-l { font-size: 9px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+    /* energy flow card */
+    .m-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .m-card-h { display:flex; align-items:center; padding:8px 12px; border-bottom:1px solid var(--border); gap:7px; font-size:10px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.07em; }
+    .m-card-b { padding: 12px; }
+
+    .flow-row { display:flex; align-items:center; justify-content:space-between; gap:6px; }
+    .flow-node { flex:1; background:#1a1a1d; border:1px solid var(--border); border-radius:7px; padding:8px 6px; text-align:center; }
+    .flow-icon { font-size:1.1rem; margin-bottom:3px; }
+    .flow-val { font-size:12px; font-weight:700; font-variant-numeric:tabular-nums; }
+    .flow-lbl { font-size:8px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin-top:1px; }
+    .flow-arr { color:var(--border); font-size:16px; flex-shrink:0; }
+    .flow-arr.active { color:var(--green); }
+
+    /* bar rows */
+    .m-row { display:flex; align-items:center; justify-content:space-between; padding:7px 0; border-bottom:1px solid var(--border); font-size:12px; }
+    .m-row:last-child { border:none; padding-bottom:0; }
+    .m-row-l { color:#a1a1aa; }
+    .m-row-v { font-weight:600; font-variant-numeric:tabular-nums; }
+
+    /* badge */
+    .mbadge { font-size:10px; font-weight:600; padding:2px 6px; border-radius:4px; }
+    .mb-ok  { background:rgba(34,197,94,.12); color:var(--green); }
+    .mb-off { background:var(--border); color:var(--muted); }
+    .mb-warn { background:rgba(234,179,8,.12); color:var(--yellow); }
+
+    /* bottom nav */
+    .mockup-footer { background: #111113; border-top: 1px solid var(--border); display:flex; }
+    .mfooter-b { flex:1; padding:8px 4px 6px; display:flex; flex-direction:column; align-items:center; gap:3px; font-size:9px; color:var(--muted); font-weight:500; letter-spacing:.03em; }
+    .mfooter-b.active { color:var(--text); }
+    .mfooter-b.active svg { color:var(--blue); }
+    .mfooter-b svg { width:16px; height:16px; color:var(--muted); }
+
+    /* ── SYSTEM DIAGRAM ── */
+    .diagram { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; }
+    .diagram-grid { display: grid; grid-template-columns: 1fr 120px 1fr; gap: 1.5rem 1rem; align-items: start; }
+    .d-col { display: flex; flex-direction: column; gap: 0.8rem; }
+
+    .d-node {
+      background: #111113; border: 1px solid var(--border); border-radius: 9px;
+      padding: 0.7rem 0.9rem; display: flex; align-items: center; gap: 0.7rem; font-size: 0.8rem;
+    }
+    .d-icon { width:30px; height:30px; border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:0.95rem; flex-shrink:0; }
+    .d-info { flex:1; }
+    .d-title { font-weight:600; font-size:0.8rem; }
+    .d-sub   { font-size:0.68rem; color:var(--muted); }
+    .d-tag   { font-size:0.6rem; font-weight:700; padding:0.1rem 0.4rem; border-radius:4px; text-transform:uppercase; letter-spacing:.04em; flex-shrink:0; }
+
+    .dn-solar  .d-icon { background:rgba(234,179,8,.12); color:var(--yellow); }
+    .dn-solar  .d-tag  { background:rgba(234,179,8,.15); color:var(--yellow); }
+    .dn-batt   .d-icon { background:rgba(34,197,94,.1); color:var(--green); }
+    .dn-batt   .d-tag  { background:rgba(34,197,94,.12); color:var(--green); }
+    .dn-heat   .d-icon { background:rgba(239,68,68,.1); color:var(--red); }
+    .dn-heat   .d-tag  { background:rgba(239,68,68,.12); color:var(--red); }
+    .dn-water  .d-icon { background:rgba(59,130,246,.1); color:var(--blue); }
+    .dn-water  .d-tag  { background:rgba(59,130,246,.12); color:var(--blue); }
+    .dn-sensor .d-icon { background:rgba(168,85,247,.1); color:var(--purple); }
+    .dn-sensor .d-tag  { background:rgba(168,85,247,.12); color:var(--purple); }
+    .dn-net    .d-icon { background:rgba(20,184,166,.1); color:var(--teal); }
+    .dn-net    .d-tag  { background:rgba(20,184,166,.12); color:var(--teal); }
+    .dn-cam    .d-icon { background:rgba(20,184,166,.1); color:var(--teal); }
+    .dn-cam    .d-tag  { background:rgba(20,184,166,.12); color:var(--teal); }
+
+    .d-center { display:flex; flex-direction:column; align-items:center; gap:0.7rem; padding-top:0.5rem; }
+    .d-rpi { background:linear-gradient(135deg,#0d2010,#091a0c); border:2px solid rgba(34,197,94,0.45); border-radius:12px; padding:1rem 1.2rem; text-align:center; box-shadow:0 0 24px rgba(34,197,94,0.07); }
+    .d-rpi-icon { font-size:1.8rem; margin-bottom:0.3rem; }
+    .d-rpi-title { font-weight:700; font-size:0.85rem; color:var(--green); }
+    .d-rpi-sub   { font-size:0.68rem; color:var(--muted); margin-top:0.15rem; }
+    .d-mqtt { background:#111113; border:1px dashed rgba(34,197,94,0.3); border-radius:7px; padding:0.35rem 0.8rem; font-size:0.68rem; color:var(--green); text-align:center; letter-spacing:.05em; }
+    .d-pwa  { background:#111113; border:1px solid rgba(59,130,246,0.3); border-radius:7px; padding:0.35rem 0.8rem; font-size:0.68rem; color:var(--blue); text-align:center; }
+
+    /* ── FEATURES ── */
+    .features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1rem; }
+    .feature-card { background:var(--card); border:1px solid var(--border); border-radius:11px; padding:1.3rem 1.5rem; transition:border-color .2s; }
+    .feature-card:hover { border-color:rgba(34,197,94,0.3); }
+    .feature-icon { font-size:1.5rem; margin-bottom:0.6rem; }
+    .feature-card h3 { font-size:0.9rem; font-weight:600; margin-bottom:0.3rem; }
+    .feature-card p  { font-size:0.82rem; color:var(--muted); }
+
+    /* ── TECH ── */
+    .tech-list { display:flex; flex-wrap:wrap; gap:0.7rem; }
+    .tech-pill { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:0.4rem 1rem; font-size:0.83rem; display:flex; align-items:center; gap:0.5rem; }
+    .tech-pill i { color:var(--teal); }
+
+    /* ── FOOTER ── */
+    footer { text-align:center; padding:2.5rem 1rem; color:var(--muted); font-size:0.82rem; border-top:1px solid var(--border); }
+    footer a { color:var(--teal); text-decoration:none; }
+
+    @media(max-width:640px) {
+      .diagram-grid { grid-template-columns:1fr; }
+      .d-center { order:-1; }
+      .m-metrics { grid-template-columns:repeat(3,1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="logo">
+    <div class="logo-mark">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    </div>
+    <span class="logo-title">CamperControl</span>
+  </div>
+  <div class="logo-v2">v2 · Raspberry Pi · Node-RED · MQTT</div>
+  <p class="hero-tagline">Styr och övervaka hela campern från mobilen — el, solenergi, värme, kyla, gas, vatten, router och kameror i ett gränssnitt.</p>
+
+  <div class="status-bar">
+    <span class="status-pill"><span class="sdot s-ylw"></span>Solceller</span>
+    <span class="status-pill"><span class="sdot s-grn"></span>Batterier</span>
+    <span class="status-pill"><span class="sdot s-blu"></span>4G Router</span>
+    <span class="status-pill"><span class="sdot s-prp"></span>Sensorer</span>
+  </div>
+  <p class="scroll-hint"><i class="fa-solid fa-chevron-down"></i></p>
+</div>
+
+<!-- MOCKUP -->
+<section>
+  <h2>Instrumentpanel</h2>
+  <p class="section-sub">PWA-gränssnitt med mörkt och ljust tema — fyra tabs för överblick, el, klimat och system.</p>
+
+  <div class="mockup-wrap">
+    <div class="mockup-titlebar">
+      <div class="tb-dots"><div class="tb-dot"></div><div class="tb-dot"></div><div class="tb-dot"></div></div>
+      <div class="tb-url">192.168.1.100 — CamperControl</div>
+    </div>
+    <div class="mockup-header">
+      <div class="mh-logo">
+        <div class="mh-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        CamperControl <span style="font-weight:400;color:var(--muted);font-size:11px;margin-left:2px">v2</span>
+      </div>
+      <div class="mh-conn"><div class="mh-dot"></div><span>Live</span></div>
+    </div>
+    <div class="mockup-nav">
+      <div class="mnav-b active">Översikt</div>
+      <div class="mnav-b">El</div>
+      <div class="mnav-b">Klimat</div>
+      <div class="mnav-b">System</div>
+    </div>
+
+    <div class="mockup-body">
+      <!-- Top metrics -->
+      <div class="m-metrics">
+        <div class="m-metric"><div class="m-v" style="color:var(--blue)">92%</div><div class="m-l">Batteri SOC</div></div>
+        <div class="m-metric"><div class="m-v" style="color:var(--yellow)">187W</div><div class="m-l">Solar</div></div>
+        <div class="m-metric"><div class="m-v" style="color:var(--text)">21°</div><div class="m-l">Inomhus</div></div>
+      </div>
+
+      <!-- Energy flow -->
+      <div class="m-card">
+        <div class="m-card-h">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Energiflöde
+          <span class="mbadge mb-ok" style="margin-left:auto">Laddar</span>
+        </div>
+        <div class="m-card-b">
+          <div class="flow-row">
+            <div class="flow-node"><div class="flow-icon">☀️</div><div class="flow-val" style="color:var(--yellow)">187W</div><div class="flow-lbl">Solar</div></div>
+            <div class="flow-arr active">›</div>
+            <div class="flow-node"><div class="flow-icon">⚡</div><div class="flow-val" style="color:var(--blue)">187W</div><div class="flow-lbl">MPPT</div></div>
+            <div class="flow-arr active">›</div>
+            <div class="flow-node"><div class="flow-icon">🔋</div><div class="flow-val" style="color:var(--blue)">92%</div><div class="flow-lbl">Husbank</div></div>
+          </div>
+          <div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border);display:flex;gap:8px;font-size:10px;color:var(--muted)">
+            <span>Start: <b style="color:var(--text)">13.8V</b></span>
+            <span>›</span>
+            <span>DC-DC: <b style="color:var(--green)">PÅ</b></span>
+            <span>›</span>
+            <span>Ut: <b style="color:var(--text)">180W</b></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- System status -->
+      <div class="m-card">
+        <div class="m-card-h">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Systemstatus
+        </div>
+        <div class="m-card-b" style="padding:8px 12px">
+          <div class="m-row"><span class="m-row-l">Värme (Truma)</span><span class="mbadge mb-ok">PÅ · Gas+El</span></div>
+          <div class="m-row"><span class="m-row-l">Luftkonditionering</span><span class="mbadge mb-off">AV</span></div>
+          <div class="m-row"><span class="m-row-l">Inverter 3000W</span><span class="mbadge mb-ok">PÅ · 340W</span></div>
+          <div class="m-row"><span class="m-row-l">Styrläge</span><span class="mbadge mb-ok">Auto</span></div>
+          <div class="m-row"><span class="m-row-l">Landström 230V</span><span class="mbadge mb-off">Ej ansluten</span></div>
+          <div class="m-row"><span class="m-row-l">Batteriräckvidd</span><span class="m-row-v">~14h 20min</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mockup-footer">
+      <div class="mfooter-b active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Översikt</div>
+      <div class="mfooter-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>El</div>
+      <div class="mfooter-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>Klimat</div>
+      <div class="mfooter-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>System</div>
+    </div>
+  </div>
+</section>
+
+<!-- SYSTEM DIAGRAM -->
+<section>
+  <h2>Systemarkitektur</h2>
+  <p class="section-sub">Raspberry Pi i centrum — kommunicerar med all hårdvara via MQTT, BLE, Modbus och GPIO.</p>
+
+  <div class="diagram">
+    <div class="diagram-grid">
+
+      <!-- VÄNSTER -->
+      <div class="d-col">
+        <div class="d-node dn-solar">
+          <div class="d-icon">☀️</div>
+          <div class="d-info"><div class="d-title">Victron MPPT 75/15</div><div class="d-sub">Solcellsladdare</div></div>
+          <span class="d-tag">BLE</span>
+        </div>
+        <div class="d-node dn-solar">
+          <div class="d-icon">🔄</div>
+          <div class="d-info"><div class="d-title">Victron Orion 50A</div><div class="d-sub">DC-DC · startbatteri → hus</div></div>
+          <span class="d-tag">BLE</span>
+        </div>
+        <div class="d-node dn-batt">
+          <div class="d-icon">🔋</div>
+          <div class="d-info"><div class="d-title">JK BMS × 2</div><div class="d-sub">LiFePO4 2×180Ah</div></div>
+          <span class="d-tag">BLE</span>
+        </div>
+        <div class="d-node dn-heat">
+          <div class="d-icon">⚡</div>
+          <div class="d-info"><div class="d-title">Inverter 3000W</div><div class="d-sub">DC→230V AC · RS485 Modbus</div></div>
+          <span class="d-tag">RS485</span>
+        </div>
+        <div class="d-node dn-net">
+          <div class="d-icon">📡</div>
+          <div class="d-info"><div class="d-title">4G Router (OpenWRT)</div><div class="d-sub">Signal, data & körstatus</div></div>
+          <span class="d-tag">LuCI</span>
+        </div>
+      </div>
+
+      <!-- CENTER -->
+      <div class="d-center">
+        <div class="d-rpi">
+          <div class="d-rpi-icon">🖥️</div>
+          <div class="d-rpi-title">Raspberry Pi</div>
+          <div class="d-rpi-sub">Node-RED</div>
+        </div>
+        <div class="d-mqtt">MQTT · Mosquitto</div>
+        <div class="d-pwa">📱 PWA · nginx</div>
+      </div>
+
+      <!-- HÖGER -->
+      <div class="d-col">
+        <div class="d-node dn-heat">
+          <div class="d-icon">🔥</div>
+          <div class="d-info"><div class="d-title">Truma Combi 6E</div><div class="d-sub">Värme + varmvatten</div></div>
+          <span class="d-tag">inetbox</span>
+        </div>
+        <div class="d-node dn-heat">
+          <div class="d-icon">❄️</div>
+          <div class="d-info"><div class="d-title">Dometic Aventa</div><div class="d-sub">Luftkonditionering</div></div>
+          <span class="d-tag">MQTT</span>
+        </div>
+        <div class="d-node dn-water">
+          <div class="d-icon">💧</div>
+          <div class="d-info"><div class="d-title">Vattentankar × 2</div><div class="d-sub">Färsk + grå vatten</div></div>
+          <span class="d-tag">GPIO</span>
+        </div>
+        <div class="d-node dn-sensor">
+          <div class="d-icon">⚖️</div>
+          <div class="d-info"><div class="d-title">Gasolvåg HX711</div><div class="d-sub">Gasoltank (kg + %)</div></div>
+          <span class="d-tag">GPIO</span>
+        </div>
+        <div class="d-node dn-sensor">
+          <div class="d-icon">🌡️</div>
+          <div class="d-info"><div class="d-title">DS18B20</div><div class="d-sub">Utomhustemperatur</div></div>
+          <span class="d-tag">1-Wire</span>
+        </div>
+        <div class="d-node dn-cam">
+          <div class="d-icon">📷</div>
+          <div class="d-info"><div class="d-title">Kameror × 2 (go2rtc)</div><div class="d-sub">Inne + Front · MJPEG</div></div>
+          <span class="d-tag">HTTP</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <h2>Funktioner</h2>
+  <p class="section-sub">Full kontroll över alla camper-system från mobilen.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Energiflöde i realtid</h3>
+      <p>Animerat flödesdiagram visar solar, MPPT, DC-DC och husbatterier med live-data varje sekund.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔋</div>
+      <h3>Batteriräckvidd</h3>
+      <p>Beräknar automatiskt hur länge batterierna räcker baserat på nettolast och solbidrag.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌡️</div>
+      <h3>Smart termostat</h3>
+      <p>Auto- och manuellt läge med klimatprofiler (Normal, Eco, Natt) för Truma Combi 6E.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">❄️</div>
+      <h3>AC-styrning</h3>
+      <p>Styr Dometic Aventa luftkonditionering — ömsesidigt uteslutande med värme i auto-läge.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💧</div>
+      <h3>Tank & gasol</h3>
+      <p>Visuella mätare för färsk- och gråvatten samt gasoltank med kg, procent och uppskattad förbrukningstid.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📡</div>
+      <h3>Routermonitorering</h3>
+      <p>4G-signalstyrka, dataförbrukning och mobilnät-status hämtas direkt från routern via LuCI.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🚗</div>
+      <h3>Körloggning</h3>
+      <p>Loggar laddningssession via Victron Orion när campern körs — alternatorspänning, ström och SOC.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Historikdiagram</h3>
+      <p>Daglig historik för solproduktion, inverterförbrukning och inomhustemperatur de senaste 30 dagarna.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3>SMS-larm</h3>
+      <p>Automatiska SMS via 46elks vid Truma-fel, inverterproblem, låg gasol eller högt gråvatten.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📷</div>
+      <h3>Live-kameror</h3>
+      <p>MJPEG-stream från inne- och frontkamera via go2rtc, direkt i webbläsaren.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔌</div>
+      <h3>Landström-detektion</h3>
+      <p>Identifierar automatiskt när campern är inkopplad till 230V och anpassar styrningen.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌓</div>
+      <h3>Mörkt & ljust tema</h3>
+      <p>Byt tema direkt i appen — mörkt för nattbruk, ljust för dagsljus.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TECH -->
+<section>
+  <h2>Byggt med</h2>
+  <p class="section-sub">Öppen källkod och beprövad teknik — ingen molntjänst, allt kör lokalt på RPi.</p>
+  <div class="tech-list">
+    <span class="tech-pill"><i class="fa-solid fa-diagram-project"></i>Node-RED</span>
+    <span class="tech-pill"><i class="fa-solid fa-tower-broadcast"></i>Mosquitto MQTT</span>
+    <span class="tech-pill"><i class="fa-brands fa-python"></i>Python (BLE, Modbus, LuCI)</span>
+    <span class="tech-pill"><i class="fa-brands fa-js"></i>Vanilla JS · PWA</span>
+    <span class="tech-pill"><i class="fa-solid fa-server"></i>nginx</span>
+    <span class="tech-pill"><i class="fa-solid fa-database"></i>InfluxDB 2.0</span>
+    <span class="tech-pill"><i class="fa-solid fa-camera"></i>go2rtc</span>
+    <span class="tech-pill"><i class="fa-solid fa-message"></i>46elks SMS</span>
+    <span class="tech-pill"><i class="fa-solid fa-microchip"></i>Raspberry Pi OS</span>
+  </div>
+</section>
+
+<footer>
+  <p>CamperControl v2 &mdash; byggt av <a href="https://github.com/TonyHellberg" target="_blank">Tony Hellberg</a></p>
+</footer>
+
+</body>
+</html>
