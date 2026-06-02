@@ -311,92 +311,6 @@
   <p class="scroll-hint"><i class="fa-solid fa-chevron-down"></i></p>
 </div>
 
-<!-- MOCKUP -->
-<section>
-  <h2>Instrumentpanel</h2>
-  <p class="section-sub">PWA-gränssnitt med mörkt och ljust tema — fem tabs: Översikt, Effekt, Klimat, System och Router.</p>
-
-  <div class="mockup-wrap">
-    <div class="mockup-titlebar">
-      <div class="tb-dots"><div class="tb-dot"></div><div class="tb-dot"></div><div class="tb-dot"></div></div>
-      <div class="tb-url">192.168.1.100 — CamperControl</div>
-    </div>
-    <div class="mockup-header">
-      <div class="mh-logo">
-        <div class="mh-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-        CamperControl <span style="font-weight:400;color:var(--muted);font-size:11px;margin-left:2px">v2</span>
-      </div>
-      <div class="mh-conn"><div class="mh-dot"></div><span>Live</span></div>
-    </div>
-    <div class="mockup-nav">
-      <div class="mnav-b active">Översikt</div>
-      <div class="mnav-b">Effekt</div>
-      <div class="mnav-b">Klimat</div>
-      <div class="mnav-b">System</div>
-      <div class="mnav-b">Router</div>
-    </div>
-
-    <div class="mockup-body">
-      <!-- Top metrics -->
-      <div class="m-metrics">
-        <div class="m-metric"><div class="m-v" style="color:var(--blue)">92%</div><div class="m-l">Batteri SOC</div></div>
-        <div class="m-metric"><div class="m-v" style="color:var(--yellow)">187W</div><div class="m-l">Solar</div></div>
-        <div class="m-metric"><div class="m-v" style="color:var(--text)">21°</div><div class="m-l">Inomhus</div></div>
-      </div>
-
-      <!-- Energy flow -->
-      <div class="m-card">
-        <div class="m-card-h">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          Energiflöde
-          <span class="mbadge mb-ok" style="margin-left:auto">Laddar</span>
-        </div>
-        <div class="m-card-b">
-          <div class="flow-row">
-            <div class="flow-node"><div class="flow-icon">☀️</div><div class="flow-val" style="color:var(--yellow)">187W</div><div class="flow-lbl">Solar</div></div>
-            <div class="flow-arr active">›</div>
-            <div class="flow-node"><div class="flow-icon">⚡</div><div class="flow-val" style="color:var(--blue)">187W</div><div class="flow-lbl">MPPT</div></div>
-            <div class="flow-arr active">›</div>
-            <div class="flow-node"><div class="flow-icon">🔋</div><div class="flow-val" style="color:var(--blue)">92%</div><div class="flow-lbl">Husbank</div></div>
-          </div>
-          <div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border);display:flex;gap:8px;font-size:10px;color:var(--muted)">
-            <span>Start: <b style="color:var(--text)">13.8V</b></span>
-            <span>›</span>
-            <span>DC-DC: <b style="color:var(--green)">PÅ</b></span>
-            <span>›</span>
-            <span>Ut: <b style="color:var(--text)">180W</b></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- System status -->
-      <div class="m-card">
-        <div class="m-card-h">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          Systemstatus
-        </div>
-        <div class="m-card-b" style="padding:8px 12px">
-          <div class="m-row"><span class="m-row-l">Värme (Truma)</span><span class="mbadge mb-ok">PÅ · Gas+El</span></div>
-          <div class="m-row"><span class="m-row-l">Luftkonditionering</span><span class="mbadge mb-off">AV</span></div>
-          <div class="m-row"><span class="m-row-l">Inverter 3000W</span><span class="mbadge mb-ok">PÅ · 340W</span></div>
-          <div class="m-row"><span class="m-row-l">Styrläge</span><span class="mbadge mb-ok">Auto</span></div>
-          <div class="m-row"><span class="m-row-l">Landström 230V</span><span class="mbadge mb-off">Ej ansluten</span></div>
-          <div class="m-row"><span class="m-row-l">Batteriräckvidd</span><span class="m-row-v">~14h 20min</span></div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="mockup-footer">
-      <div class="mfooter-b active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Översikt</div>
-      <div class="mfooter-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Effekt</div>
-      <div class="mfooter-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>Klimat</div>
-      <div class="mfooter-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>System</div>
-      <div class="mfooter-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M10.07 16.18A5.5 5.5 0 0 1 14 16"/><circle cx="12" cy="20" r="1"/></svg>Router</div>
-    </div>
-  </div>
-</section>
-
 <!-- SYSTEM DIAGRAM -->
 <section>
   <h2>Systemarkitektur</h2>
@@ -474,7 +388,7 @@
         </div>
         <div class="d-node dn-cam">
           <div class="d-icon">📷</div>
-          <div class="d-info"><div class="d-title">Kameror × 2 (go2rtc)</div><div class="d-sub">Inne + Front · MJPEG</div></div>
+          <div class="d-info"><div class="d-title">Kameror × 2</div><div class="d-sub">Inne + Front via go2rtc</div></div>
           <span class="d-tag">HTTP</span>
         </div>
       </div>
@@ -538,15 +452,11 @@
       <h3>Historikdiagram</h3>
       <p>14 dagars stapeldiagram per tab: solproduktion, inverterförbrukning, inomhustemperatur, vattenförbrukning och gasol.</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">📱</div>
-      <h3>SMS-larm</h3>
-      <p>Automatiska SMS via 46elks vid Truma-fel, inverterproblem, låg gasol (&lt;10%) eller högt gråvatten (&gt;75%).</p>
-    </div>
+
     <div class="feature-card">
       <div class="feature-icon">📷</div>
       <h3>Live-kameror</h3>
-      <p>Inne- och frontkamera via go2rtc med automatisk återanslutning — växla vy med ett tryck.</p>
+      <p>Inne- och frontkamera med automatisk återanslutning — växla vy med ett tryck.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🔌</div>
@@ -985,7 +895,6 @@
     <span class="tech-pill"><i class="fa-solid fa-server"></i>nginx</span>
     <span class="tech-pill"><i class="fa-solid fa-database"></i>InfluxDB 2.0</span>
     <span class="tech-pill"><i class="fa-solid fa-camera"></i>go2rtc</span>
-    <span class="tech-pill"><i class="fa-solid fa-message"></i>46elks SMS</span>
     <span class="tech-pill"><i class="fa-solid fa-microchip"></i>Raspberry Pi OS</span>
   </div>
 </section>
