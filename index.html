@@ -314,7 +314,7 @@
 <!-- MOCKUP -->
 <section>
   <h2>Instrumentpanel</h2>
-  <p class="section-sub">PWA-gränssnitt med mörkt och ljust tema — fyra tabs för överblick, el, klimat och system.</p>
+  <p class="section-sub">PWA-gränssnitt med mörkt och ljust tema — fem tabs: Översikt, Effekt, Klimat, System och Router.</p>
 
   <div class="mockup-wrap">
     <div class="mockup-titlebar">
@@ -330,7 +330,7 @@
     </div>
     <div class="mockup-nav">
       <div class="mnav-b active">Översikt</div>
-      <div class="mnav-b">El</div>
+      <div class="mnav-b">Effekt</div>
       <div class="mnav-b">Klimat</div>
       <div class="mnav-b">System</div>
       <div class="mnav-b">Router</div>
@@ -389,7 +389,7 @@
 
     <div class="mockup-footer">
       <div class="mfooter-b active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Översikt</div>
-      <div class="mfooter-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>El</div>
+      <div class="mfooter-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Effekt</div>
       <div class="mfooter-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>Klimat</div>
       <div class="mfooter-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>System</div>
       <div class="mfooter-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M10.07 16.18A5.5 5.5 0 0 1 14 16"/><circle cx="12" cy="20" r="1"/></svg>Router</div>
@@ -491,62 +491,72 @@
     <div class="feature-card">
       <div class="feature-icon">⚡</div>
       <h3>Energiflöde i realtid</h3>
-      <p>Animerat flödesdiagram visar solar, MPPT, DC-DC och husbatterier med live-data varje sekund.</p>
+      <p>Animerat SVG-diagram visar Solar → MPPT → Husbank och DC-DC Orion med live-data via WebSocket.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🔋</div>
       <h3>Batteriräckvidd</h3>
-      <p>Beräknar automatiskt hur länge batterierna räcker baserat på nettolast och solbidrag.</p>
+      <p>Beräknar återstående tid från BMS-data (remain_ah) och nettolast. Visar "∞" vid landström.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🌡️</div>
       <h3>Smart termostat</h3>
-      <p>Auto- och manuellt läge med klimatprofiler (Normal, Eco, Natt) för Truma Combi 6E.</p>
+      <p>Auto- och manuellt läge med klimatprofiler (Normal, Eco, Natt). Styr Truma Combi 6E via iNetbox.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">❄️</div>
       <h3>AC-styrning</h3>
-      <p>Styr Dometic Aventa luftkonditionering — ömsesidigt uteslutande med värme i auto-läge.</p>
+      <p>Dometic Aventa luftkonditionering — ömsesidigt uteslutande med värme i auto-läge.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">💧</div>
       <h3>Tank & gasol</h3>
-      <p>Visuella mätare för färsk- och gråvatten samt gasoltank med kg, procent och uppskattad förbrukningstid.</p>
+      <p>Animerade CSS-tankmätare för färsk- och gråvatten. Gasol visar kg, procent och beräknad tid kvar baserat på Trumas aktuella förbrukning.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⛽</div>
+      <h3>Reservflaska</h3>
+      <p>Aktivera reservgasolflaska och byt aktiv flaska direkt från appen — med bekräftelsedialog.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">📡</div>
       <h3>Routermonitorering</h3>
-      <p>4G-signalstyrka, dataförbrukning och mobilnät-status hämtas direkt från routern via LuCI.</p>
+      <p>4G-signal (RSRP/RSSI/RSRQ/SINR), WiFi Repeater, live bandbredd-grafer och 30-dagars datahistorik från OpenWRT via LuCI.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🖥️</div>
+      <h3>Systemhälsa</h3>
+      <p>CPU-last, RAM-användning och CPU-temperatur för Raspberry Pi — direkt i System-tabben.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🚗</div>
       <h3>Körloggning</h3>
-      <p>Loggar laddningssession via Victron Orion när campern körs — alternatorspänning, ström och SOC.</p>
+      <p>Loggar automatiskt varje körning via Victron Orion DC-DC till CSV — alternatorspänning, ström och SOC.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">📊</div>
       <h3>Historikdiagram</h3>
-      <p>Daglig historik för solproduktion, inverterförbrukning och inomhustemperatur de senaste 30 dagarna.</p>
+      <p>14 dagars stapeldiagram per tab: solproduktion, inverterförbrukning, inomhustemperatur, vattenförbrukning och gasol.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">📱</div>
       <h3>SMS-larm</h3>
-      <p>Automatiska SMS via 46elks vid Truma-fel, inverterproblem, låg gasol eller högt gråvatten.</p>
+      <p>Automatiska SMS via 46elks vid Truma-fel, inverterproblem, låg gasol (&lt;10%) eller högt gråvatten (&gt;75%).</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">📷</div>
       <h3>Live-kameror</h3>
-      <p>MJPEG-stream från inne- och frontkamera via go2rtc, direkt i webbläsaren.</p>
+      <p>Inne- och frontkamera via go2rtc med automatisk återanslutning — växla vy med ett tryck.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🔌</div>
       <h3>Landström-detektion</h3>
-      <p>Identifierar automatiskt när campern är inkopplad till 230V och anpassar styrningen.</p>
+      <p>Detekterar automatiskt 230V landström och anpassar batteriräknevisningen.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🌓</div>
       <h3>Mörkt & ljust tema</h3>
-      <p>Byt tema direkt i appen — mörkt för nattbruk, ljust för dagsljus.</p>
+      <p>Byt mellan mörkt och ljust tema — sparas i webbläsaren.</p>
     </div>
   </div>
 </section>
@@ -595,7 +605,7 @@
           </div>
           <div class="ps-nav">
           <div class="ps-nb active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Översikt</div>
-          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>El</div>
+          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Effekt</div>
           <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>Klimat</div>
           <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>System</div>
           <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M10.07 16.18A5.5 5.5 0 0 1 14 16"/><circle cx="12" cy="20" r="1"/></svg>Router</div>
@@ -610,7 +620,7 @@
         <div class="phone-screen">
           <div class="ps-header">
             <div class="ps-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-            <span class="ps-title">El &amp; Batteri</span>
+            <span class="ps-title">Effekt &amp; Batteri</span>
             <div class="ps-dot"></div>
           </div>
           <div class="ps-body">
@@ -643,14 +653,14 @@
           </div>
           <div class="ps-nav">
           <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Översikt</div>
-          <div class="ps-nb active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>El</div>
+          <div class="ps-nb active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Effekt</div>
           <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>Klimat</div>
           <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>System</div>
           <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M10.07 16.18A5.5 5.5 0 0 1 14 16"/><circle cx="12" cy="20" r="1"/></svg>Router</div>
         </div>
         </div>
       </div>
-      <div class="phone-label">El</div>
+      <div class="phone-label">Effekt</div>
     </div>
     <div class="phone-col">
       <div class="phone-frame">
@@ -691,7 +701,7 @@
           </div>
           <div class="ps-nav">
           <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Översikt</div>
-          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>El</div>
+          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Effekt</div>
           <div class="ps-nb active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>Klimat</div>
           <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>System</div>
           <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M10.07 16.18A5.5 5.5 0 0 1 14 16"/><circle cx="12" cy="20" r="1"/></svg>Router</div>
@@ -740,7 +750,7 @@
           </div>
           <div class="ps-nav">
           <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Översikt</div>
-          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>El</div>
+          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Effekt</div>
           <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>Klimat</div>
           <div class="ps-nb active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>System</div>
           <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M10.07 16.18A5.5 5.5 0 0 1 14 16"/><circle cx="12" cy="20" r="1"/></svg>Router</div>
@@ -800,7 +810,7 @@
           </div>
           <div class="ps-nav">
           <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Översikt</div>
-          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>El</div>
+          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Effekt</div>
           <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>Klimat</div>
           <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>System</div>
           <div class="ps-nb active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M10.07 16.18A5.5 5.5 0 0 1 14 16"/><circle cx="12" cy="20" r="1"/></svg>Router</div>
