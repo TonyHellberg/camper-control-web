@@ -169,6 +169,148 @@
     .feature-card h3 { font-size:0.9rem; font-weight:600; margin-bottom:0.3rem; }
     .feature-card p  { font-size:0.82rem; color:var(--muted); }
 
+    /* ── IPHONE MOCKUPS ── */
+    .phones-section { background: radial-gradient(ellipse at 50% 50%, #0d2010 0%, var(--bg) 70%); }
+    .phones-wrap {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      padding: 1rem 0 2rem;
+    }
+    .phone-frame {
+      width: 200px;
+      background: #1a1a1c;
+      border-radius: 40px;
+      padding: 12px;
+      box-shadow:
+        0 0 0 1.5px #3a3a3c,
+        0 0 0 3px #1a1a1c,
+        0 30px 80px rgba(0,0,0,0.7),
+        inset 0 0 0 1px rgba(255,255,255,0.05);
+      position: relative;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .phone-frame:hover { transform: translateY(-8px); }
+    .phone-frame.center { transform: scale(1.08); }
+    .phone-frame.center:hover { transform: scale(1.08) translateY(-8px); }
+
+    /* Dynamic island */
+    .phone-island {
+      width: 72px; height: 26px;
+      background: #000;
+      border-radius: 20px;
+      margin: 0 auto 8px;
+      position: relative;
+      z-index: 2;
+    }
+    /* Side buttons */
+    .phone-frame::before {
+      content: '';
+      position: absolute;
+      left: -3.5px; top: 80px;
+      width: 3px; height: 36px;
+      background: #2a2a2c;
+      border-radius: 2px 0 0 2px;
+      box-shadow: 0 46px 0 #2a2a2c, 0 92px 0 #2a2a2c;
+    }
+    .phone-frame::after {
+      content: '';
+      position: absolute;
+      right: -3.5px; top: 110px;
+      width: 3px; height: 60px;
+      background: #2a2a2c;
+      border-radius: 0 2px 2px 0;
+    }
+    /* Screen */
+    .phone-screen {
+      background: #09090b;
+      border-radius: 28px;
+      overflow: hidden;
+      aspect-ratio: 9/19.5;
+      position: relative;
+    }
+
+    /* Screen content */
+    .ps-header {
+      background: #111113;
+      padding: 8px 10px 6px;
+      display: flex; align-items: center; gap: 6px;
+      border-bottom: 1px solid #27272a;
+      font-size: 7px;
+    }
+    .ps-logo-mark { width:14px; height:14px; background:var(--blue); border-radius:3px; display:flex; align-items:center; justify-content:center; }
+    .ps-logo-mark svg { width:8px; color:#fff; }
+    .ps-title { font-weight:700; font-size:8px; flex:1; }
+    .ps-dot { width:5px; height:5px; border-radius:50%; background:var(--green); animation:pulse 2s ease-in-out infinite; box-shadow:0 0 4px var(--green); }
+
+    .ps-body { padding: 6px; display:flex; flex-direction:column; gap:5px; overflow:hidden; }
+
+    /* metrics */
+    .ps-metrics { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
+    .ps-metric { background:#18181b; border:1px solid #27272a; border-radius:5px; padding:5px 4px; text-align:center; }
+    .ps-mv { font-size:9px; font-weight:700; line-height:1; margin-bottom:1px; font-variant-numeric:tabular-nums; }
+    .ps-ml { font-size:5.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
+
+    /* mini card */
+    .ps-card { background:#18181b; border:1px solid #27272a; border-radius:5px; overflow:hidden; }
+    .ps-card-h { padding:4px 7px; border-bottom:1px solid #27272a; font-size:6px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; display:flex; align-items:center; gap:5px; }
+    .ps-card-b { padding:6px 7px; }
+
+    /* mini flow */
+    .ps-flow { display:flex; align-items:center; gap:3px; }
+    .ps-fn { flex:1; background:#111113; border:1px solid #27272a; border-radius:4px; padding:4px 3px; text-align:center; }
+    .ps-fv { font-size:7px; font-weight:700; }
+    .ps-fl { font-size:5px; color:var(--muted); text-transform:uppercase; }
+    .ps-fa { color:#3f3f46; font-size:9px; }
+    .ps-fa.on { color:var(--green); }
+
+    /* mini rows */
+    .ps-row { display:flex; justify-content:space-between; padding:3px 0; border-bottom:1px solid #27272a; font-size:6.5px; }
+    .ps-row:last-child { border:none; padding-bottom:0; }
+    .ps-rl { color:#a1a1aa; }
+    .ps-rv { font-weight:600; font-variant-numeric:tabular-nums; }
+
+    /* mini badge */
+    .ps-b { font-size:5.5px; font-weight:700; padding:1px 4px; border-radius:3px; }
+    .ps-ok  { background:rgba(34,197,94,.15); color:var(--green); }
+    .ps-off { background:#27272a; color:var(--muted); }
+    .ps-warn { background:rgba(234,179,8,.15); color:var(--yellow); }
+
+    /* mini bar */
+    .ps-bar-wrap { background:#27272a; border-radius:2px; height:3px; margin:3px 0; overflow:hidden; }
+    .ps-bar { height:100%; border-radius:2px; }
+
+    /* mini tank */
+    .ps-tanks { display:flex; gap:8px; justify-content:center; padding:4px 0; }
+    .ps-tank-w { display:flex; flex-direction:column; align-items:center; gap:2px; }
+    .ps-tank-cap { width:12px; height:3px; background:#3f3f46; border-radius:2px; }
+    .ps-tank-outer { width:22px; height:44px; border:1.5px solid #3f3f46; border-radius:3px; background:#27272a; overflow:hidden; position:relative; }
+    .ps-tank-lvl { position:absolute; bottom:0; left:0; right:0; }
+    .ps-tank-txt { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:6px; font-weight:700; color:#fafafa; text-shadow:0 1px 2px rgba(0,0,0,.8); }
+    .ps-tank-lbl { font-size:5.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
+
+    /* gasol bottle mini */
+    .ps-gasol-wrap { display:flex; flex-direction:column; align-items:center; gap:1px; }
+    .ps-gasol-valve { width:8px; height:4px; background:#52525b; border-radius:2px; }
+    .ps-gasol-neck  { width:14px; height:5px; background:#3f3f46; border-radius:2px; margin-top:1px; }
+    .ps-gasol-can   { width:22px; height:40px; border:1.5px solid #3f3f46; border-radius:4px; background:#27272a; overflow:hidden; position:relative; }
+    .ps-gasol-fill  { position:absolute; bottom:0; left:0; right:0; background:var(--orange); }
+    .ps-gasol-txt   { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:6px; font-weight:700; color:#fafafa; text-shadow:0 1px 2px rgba(0,0,0,.8); }
+    .ps-gasol-base  { width:26px; height:4px; background:#3f3f46; border-radius:3px; }
+
+    /* nav */
+    .ps-nav { position:absolute; bottom:0; left:0; right:0; background:#111113; border-top:1px solid #27272a; display:flex; padding-bottom:4px; }
+    .ps-nb { flex:1; display:flex; flex-direction:column; align-items:center; gap:1px; padding:4px 0 2px; font-size:5px; color:var(--muted); font-weight:500; letter-spacing:.03em; }
+    .ps-nb.active { color:var(--text); }
+    .ps-nb svg { width:9px; height:9px; }
+    .ps-nb.active svg { color:var(--blue); }
+
+    /* phone label */
+    .phone-label { text-align:center; margin-top:1rem; font-size:0.8rem; color:var(--muted); font-weight:500; }
+
     /* ── TECH ── */
     .tech-list { display:flex; flex-wrap:wrap; gap:0.7rem; }
     .tech-pill { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:0.4rem 1rem; font-size:0.83rem; display:flex; align-items:center; gap:0.5rem; }
@@ -442,6 +584,255 @@
       <h3>Mörkt & ljust tema</h3>
       <p>Byt tema direkt i appen — mörkt för nattbruk, ljust för dagsljus.</p>
     </div>
+  </div>
+</section>
+
+<!-- IPHONE MOCKUPS -->
+<section class="phones-section">
+  <h2>Se appen i aktion</h2>
+  <p class="section-sub">Fyra skärmar — Översikt, El, Klimat och System — alltid i fickan.</p>
+
+  <div class="phones-wrap">
+
+    <!-- PHONE 1: Översikt -->
+    <div class="phone-frame">
+      <div class="phone-island"></div>
+      <div class="phone-screen">
+        <div class="ps-header">
+          <div class="ps-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <span class="ps-title">CamperControl</span>
+          <div class="ps-dot"></div>
+        </div>
+        <div class="ps-body">
+          <div class="ps-metrics">
+            <div class="ps-metric"><div class="ps-mv" style="color:var(--blue)">92%</div><div class="ps-ml">SOC</div></div>
+            <div class="ps-metric"><div class="ps-mv" style="color:var(--yellow)">187W</div><div class="ps-ml">Solar</div></div>
+            <div class="ps-metric"><div class="ps-mv">21°</div><div class="ps-ml">Inne</div></div>
+          </div>
+          <div class="ps-card">
+            <div class="ps-card-h"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Energiflöde</div>
+            <div class="ps-card-b">
+              <div class="ps-flow">
+                <div class="ps-fn"><div class="ps-fv" style="color:var(--yellow)">187W</div><div class="ps-fl">Solar</div></div>
+                <div class="ps-fa on">›</div>
+                <div class="ps-fn"><div class="ps-fv" style="color:var(--blue)">187W</div><div class="ps-fl">MPPT</div></div>
+                <div class="ps-fa on">›</div>
+                <div class="ps-fn"><div class="ps-fv" style="color:var(--blue)">92%</div><div class="ps-fl">Hus</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="ps-card">
+            <div class="ps-card-h"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Systemstatus</div>
+            <div class="ps-card-b">
+              <div class="ps-row"><span class="ps-rl">Värme</span><span class="ps-b ps-ok">PÅ · Gas+El</span></div>
+              <div class="ps-row"><span class="ps-rl">Inverter</span><span class="ps-b ps-ok">PÅ · 340W</span></div>
+              <div class="ps-row"><span class="ps-rl">Styrläge</span><span class="ps-b ps-ok">Auto</span></div>
+              <div class="ps-row"><span class="ps-rl">Räckvidd</span><span class="ps-rv">~14h 20m</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ps-nav">
+          <div class="ps-nb active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Översikt</div>
+          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>El</div>
+          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>Klimat</div>
+          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>System</div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">Översikt</div>
+
+    <!-- PHONE 2: El (center, larger) -->
+    <div style="display:flex;flex-direction:column;align-items:center">
+    <div class="phone-frame center">
+      <div class="phone-island"></div>
+      <div class="phone-screen">
+        <div class="ps-header">
+          <div class="ps-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <span class="ps-title">El &amp; Batteri</span>
+          <div class="ps-dot"></div>
+        </div>
+        <div class="ps-body">
+          <div class="ps-card">
+            <div class="ps-card-h"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="11" x2="23" y2="13"/></svg>Husbatteri · 2×180Ah <span class="ps-b ps-ok" style="margin-left:auto">Laddar</span></div>
+            <div class="ps-card-b">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
+                <svg width="30" height="30" viewBox="0 0 84 84">
+                  <circle cx="42" cy="42" r="34" fill="none" stroke="#27272a" stroke-width="7"/>
+                  <circle cx="42" cy="42" r="34" fill="none" stroke="#3b82f6" stroke-width="7" stroke-linecap="round"
+                    stroke-dasharray="196 214" transform="rotate(-90 42 42)"/>
+                  <text x="42" y="46" text-anchor="middle" font-size="13" font-weight="700" fill="#fafafa" font-family="monospace">92%</text>
+                </svg>
+                <div>
+                  <div style="font-size:6.5px;color:var(--muted)">Snitt spänning</div>
+                  <div style="font-size:10px;font-weight:700;font-variant-numeric:tabular-nums">48.2 V</div>
+                  <div style="font-size:6.5px;color:var(--muted);margin-top:3px">Total ström</div>
+                  <div style="font-size:10px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--green)">+3.9 A</div>
+                </div>
+              </div>
+              <div style="font-size:6px;color:var(--muted);margin-bottom:2px;font-weight:700">B1</div>
+              <div class="ps-bar-wrap"><div class="ps-bar" style="width:92%;background:var(--blue)"></div></div>
+              <div style="font-size:6px;color:var(--muted);margin-bottom:2px;margin-top:3px;font-weight:700">B2</div>
+              <div class="ps-bar-wrap"><div class="ps-bar" style="width:88%;background:var(--blue)"></div></div>
+            </div>
+          </div>
+          <div style="display:flex;gap:4px">
+            <div class="ps-card" style="flex:1">
+              <div class="ps-card-h" style="font-size:5.5px">☀️ MPPT</div>
+              <div class="ps-card-b">
+                <div class="ps-row"><span class="ps-rl">Effekt</span><span class="ps-rv" style="color:var(--yellow)">187W</span></div>
+                <div class="ps-row"><span class="ps-rl">PV</span><span class="ps-rv">24.6V</span></div>
+              </div>
+            </div>
+            <div class="ps-card" style="flex:1">
+              <div class="ps-card-h" style="font-size:5.5px">🔄 DC-DC</div>
+              <div class="ps-card-b">
+                <div class="ps-row"><span class="ps-rl">Start</span><span class="ps-rv">13.8V</span></div>
+                <div class="ps-row"><span class="ps-rl">Effekt</span><span class="ps-rv" style="color:var(--green)">180W</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="ps-card">
+            <div class="ps-card-h">⚡ Inverter 3000W <span class="ps-b ps-ok" style="margin-left:auto">PÅ</span></div>
+            <div class="ps-card-b">
+              <div class="ps-row"><span class="ps-rl">Effekt</span><span class="ps-rv">340W</span></div>
+              <div class="ps-row"><span class="ps-rl">Last</span><span class="ps-rv">11%</span></div>
+              <div class="ps-bar-wrap" style="margin-top:2px"><div class="ps-bar" style="width:11%;background:var(--teal)"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="ps-nav">
+          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Översikt</div>
+          <div class="ps-nb active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>El</div>
+          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>Klimat</div>
+          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>System</div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">El &amp; Batteri</div>
+    </div>
+
+    <!-- PHONE 3: Klimat -->
+    <div style="display:flex;flex-direction:column;align-items:center">
+    <div class="phone-frame">
+      <div class="phone-island"></div>
+      <div class="phone-screen">
+        <div class="ps-header">
+          <div class="ps-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <span class="ps-title">Klimat</span>
+          <div class="ps-dot"></div>
+        </div>
+        <div class="ps-body">
+          <div class="ps-card">
+            <div class="ps-card-h">🌡️ Termostat <span class="ps-b ps-ok" style="margin-left:auto">Auto</span></div>
+            <div class="ps-card-b" style="text-align:center;padding:8px 7px">
+              <div style="font-size:32px;font-weight:100;font-variant-numeric:tabular-nums;line-height:1;letter-spacing:-.03em">21<span style="font-size:14px;color:var(--muted)">°</span></div>
+              <div style="font-size:6px;color:var(--muted);margin-top:2px">Måltemperatur</div>
+              <div style="height:2px;background:#27272a;border-radius:1px;margin:6px 0;position:relative">
+                <div style="position:absolute;left:35%;top:-2px;width:6px;height:6px;background:#fafafa;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.5)"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:5.5px;color:var(--muted);font-family:monospace"><span>16°</span><span>23°</span><span>30°</span></div>
+            </div>
+          </div>
+          <div class="ps-card">
+            <div class="ps-card-h">🔥 Truma Combi 6E <span class="ps-b ps-ok" style="margin-left:auto">PÅ</span></div>
+            <div class="ps-card-b">
+              <div style="display:flex;gap:3px;margin-bottom:5px">
+                <div style="flex:1;text-align:center;padding:4px 2px;border-radius:3px;font-size:5.5px;font-weight:700;background:rgba(249,115,22,.15);color:var(--orange);border:1px solid rgba(249,115,22,.3)">Gas</div>
+                <div style="flex:1;text-align:center;padding:4px 2px;border-radius:3px;font-size:5.5px;font-weight:700;background:rgba(59,130,246,.15);color:var(--blue);border:1px solid rgba(59,130,246,.3)">El 1800W</div>
+                <div style="flex:1;text-align:center;padding:4px 2px;border-radius:3px;font-size:5.5px;font-weight:700;background:#27272a;color:var(--muted);border:1px solid #3f3f46">Mix</div>
+              </div>
+              <div class="ps-row"><span class="ps-rl">Innetemperatur</span><span class="ps-rv" style="color:var(--red)">21°C</span></div>
+              <div class="ps-row"><span class="ps-rl">Boiler</span><span class="ps-rv">58°C</span></div>
+            </div>
+          </div>
+          <div class="ps-card">
+            <div class="ps-card-h">❄️ AC <span class="ps-b ps-off" style="margin-left:auto">AV</span></div>
+            <div class="ps-card-b">
+              <div style="font-size:6.5px;color:var(--muted);text-align:center;padding:4px 0">Dometic Aventa — inaktiv</div>
+            </div>
+          </div>
+        </div>
+        <div class="ps-nav">
+          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Översikt</div>
+          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>El</div>
+          <div class="ps-nb active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>Klimat</div>
+          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>System</div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">Klimat</div>
+    </div>
+
+    <!-- PHONE 4: System/Sensorer -->
+    <div style="display:flex;flex-direction:column;align-items:center">
+    <div class="phone-frame">
+      <div class="phone-island"></div>
+      <div class="phone-screen">
+        <div class="ps-header">
+          <div class="ps-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <span class="ps-title">System</span>
+          <div class="ps-dot"></div>
+        </div>
+        <div class="ps-body">
+          <div class="ps-card">
+            <div class="ps-card-h">💧 Tankar &amp; Gasol</div>
+            <div class="ps-card-b">
+              <div class="ps-tanks">
+                <div class="ps-tank-w">
+                  <div class="ps-tank-cap"></div>
+                  <div class="ps-tank-outer">
+                    <div class="ps-tank-lvl" style="height:68%;background:var(--blue)"></div>
+                    <div class="ps-tank-txt">68%</div>
+                  </div>
+                  <div class="ps-tank-lbl">Färsk</div>
+                </div>
+                <div class="ps-tank-w">
+                  <div class="ps-tank-cap"></div>
+                  <div class="ps-tank-outer">
+                    <div class="ps-tank-lvl" style="height:34%;background:var(--purple)"></div>
+                    <div class="ps-tank-txt">34%</div>
+                  </div>
+                  <div class="ps-tank-lbl">Grå</div>
+                </div>
+                <div class="ps-gasol-wrap">
+                  <div class="ps-gasol-valve"></div>
+                  <div class="ps-gasol-neck"></div>
+                  <div class="ps-gasol-can">
+                    <div class="ps-gasol-fill" style="height:47%"></div>
+                    <div class="ps-gasol-txt">47%</div>
+                  </div>
+                  <div class="ps-gasol-base"></div>
+                  <div class="ps-tank-lbl">Gasol</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ps-card">
+            <div class="ps-card-h">📡 Router 4G</div>
+            <div class="ps-card-b">
+              <div class="ps-row"><span class="ps-rl">Signal</span><span class="ps-rv" style="color:var(--green)">-73 dBm</span></div>
+              <div class="ps-row"><span class="ps-rl">Nät</span><span class="ps-rv">Tele2 LTE</span></div>
+              <div class="ps-row"><span class="ps-rl">Data idag</span><span class="ps-rv">1.4 GB</span></div>
+            </div>
+          </div>
+          <div class="ps-card">
+            <div class="ps-card-h">🌡️ Utomhus</div>
+            <div class="ps-card-b">
+              <div style="text-align:center;font-size:18px;font-weight:200;color:var(--blue);padding:4px 0">14<span style="font-size:8px;color:var(--muted)">°C</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ps-nav">
+          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Översikt</div>
+          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>El</div>
+          <div class="ps-nb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>Klimat</div>
+          <div class="ps-nb active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>System</div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">System</div>
+    </div>
+
   </div>
 </section>
 
